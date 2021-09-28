@@ -9,7 +9,7 @@
                 @show='showModal'
             />
         </v-row>
-    <Modal :dialog="dialogVisible" :photo="currentPhoto" />
+    <Modal v-model="dialogVisible" :photo="currentPhoto" />
     </v-container>
 </template>
 
@@ -43,10 +43,8 @@ import Modal from '../components/photo/Modal.vue';
             this.photos.push(photo);
         },
         showModal(photo){
-            
             this.currentPhoto = photo;
             this.dialogVisible = true;
-            console.log(this.currentPhoto);
         }
     }
 

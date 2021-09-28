@@ -1,7 +1,7 @@
 <template>
      <v-row justify="center">
    <v-dialog
-        v-model="dialog"        
+        v-model="dialogVisible"
         max-width="290"
       >
       <v-card>
@@ -20,10 +20,24 @@
         photo:{
           type: Object
         },
-        dialog:{
+        value:{
           type: Boolean
         },
       },
+      created(){
+        this.dialogVisible = this.value;
+      },
+      data:() =>({
+        dialogVisible: false
+      }),
+      watch:{
+        value(newValue) {
+          this.dialogVisible = newValue;
+        },
+        dialogVisible(newValue) {
+          this.$emit('input',newValue);
+        }
+      }
   
          
     }

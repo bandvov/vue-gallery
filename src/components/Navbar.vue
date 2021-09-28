@@ -1,4 +1,6 @@
 <template>
+<v-container fluid>
+
   <v-app-bar
         color="orange"
         dense
@@ -14,12 +16,13 @@
             <v-btn>Gallery</v-btn>
         </router-link>
       </v-app-bar>
+    </v-container>
 </template>
 
 <script>
     export default {
-        
-    }
+      
+      }
 </script>
 
 <style lang="scss" scoped>
