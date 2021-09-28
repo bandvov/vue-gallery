@@ -6,23 +6,29 @@
                 v-for="photo in photos"
                 v-bind:key="photo.id"
                 v-bind:photo="photo"
+                @show='showModal'
             />
         </v-row>
+    <Modal :dialog="dialogVisible" :photo="currentPhoto" />
     </v-container>
 </template>
 
 <script>
 import Photo from '../components/photo/Photo.vue';
 import PhotoForm from '../components/photo/PhotoForm.vue';
+import Modal from '../components/photo/Modal.vue';
 
     export default {
         components:{
             Photo,
             PhotoForm,
+            Modal
         },
         data:()=>{
             return {
-                photos:[]
+                photos:[],
+                currentPhoto: {},
+                dialogVisible: false,
         }
     },
       mounted(){
@@ -35,6 +41,12 @@ import PhotoForm from '../components/photo/PhotoForm.vue';
         },
         addPhoto(photo){
             this.photos.push(photo);
+        },
+        showModal(photo){
+            
+            this.currentPhoto = photo;
+            this.dialogVisible = true;
+            console.log(this.currentPhoto);
         }
     }
 

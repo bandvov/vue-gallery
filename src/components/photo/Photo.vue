@@ -1,6 +1,6 @@
 <template>
 <v-col cols="4">
-    <v-card>
+    <v-card @click="showDialog">
         <v-card-title>{{photo.title}}</v-card-title>
         <v-card-text>
             <v-img 
@@ -15,9 +15,14 @@
 
 <script>
     export default {
-        props:{
-            photo:{
+        props: {
+            photo: {
                 type: Object,
+            }
+        },
+        methods: {
+            showDialog(){
+                this.$emit("show",this.photo);
             }
         }
     }
