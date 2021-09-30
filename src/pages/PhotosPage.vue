@@ -3,7 +3,7 @@
         <PhotoForm @addPhoto="addPhoto" />
         <v-row>
             <Photo
-                v-for="photo in photos"
+                v-for="photo in $store.getters.getAllPhotos"
                 v-bind:key="photo.id"
                 v-bind:photo="photo"
                 @show='showModal'
@@ -32,13 +32,14 @@ import Modal from '../components/photo/Modal.vue';
         }
     },
       mounted(){
-        this.fetchToDo();
+        // this.fetchPhotos();
+        this.$store.dispatch("fetchPhotos");
     },
     methods:{
-        fetchToDo(){
-        this.axios.get("https://jsonplaceholder.typicode.com/photos?_limit=10")
-        .then(res=> this.photos = res.data);
-        },
+        // fetchPhotos(){
+        // this.axios.get("https://jsonplaceholder.typicode.com/photos?_limit=10")
+        // .then(res=> this.photos = res.data);
+        // },
         addPhoto(photo){
             this.photos.push(photo);
         },
