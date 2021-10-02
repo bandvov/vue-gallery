@@ -1,6 +1,6 @@
 <template>
 <v-col cols="4">
-    <v-card @click="showDialog">
+    <v-card @click="showModal">
         <v-card-title>{{photo.title}}</v-card-title>
         <v-card-text>
             <v-img 
@@ -14,15 +14,18 @@
 </template>
 
 <script>
+import {mapMutations} from 'vuex';
     export default {
-        props: {
-            photo: {
-                type: Object,
+        props:{
+            photo:{
+                type: Object
             }
         },
         methods: {
-            showDialog(){
-                this.$emit("show",this.photo);
+            ...mapMutations(["setCurrentPhoto", "showDialog"]),
+            showModal(){
+                this.setCurrentPhoto(this.photo);
+                this.showDialog(this.photo);
             }
         }
     }
