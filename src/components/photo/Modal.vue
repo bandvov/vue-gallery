@@ -3,7 +3,7 @@
     <v-dialog
           max-width="290"
           v-model="$store.getters.getDialogVisible"
-          @click:outside="$store.commit('hideDialog')"
+          @click:outside="hideModal"
       >
       <v-card>
         <v-card-title>{{$store.getters.getCurrentPhoto.title}}</v-card-title>
@@ -14,8 +14,15 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
+
     export default {
-  
+  methods:{
+    ...mapMutations(["hideDialog"]),
+    hideModal(){
+      this.hideDialog();
+    }
+  }
     }
 </script>
 
