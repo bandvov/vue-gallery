@@ -3,7 +3,6 @@
 
   <v-app-bar
         color="orange"
-        dense
         dark
       >
         <v-app-bar-nav-icon></v-app-bar-nav-icon>

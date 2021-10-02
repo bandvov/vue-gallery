@@ -15,14 +15,15 @@
 
 <script>
     export default {
-        props: {
-            photo: {
-                type: Object,
+        props:{
+            photo:{
+                type: Object
             }
         },
         methods: {
             showDialog(){
-                this.$emit("show",this.photo);
+                this.$store.commit("setCurrentPhoto",this.photo);
+                this.$store.commit("showDialog",this.photo);
             }
         }
     }

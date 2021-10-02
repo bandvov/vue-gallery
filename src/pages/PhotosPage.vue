@@ -6,10 +6,9 @@
                 v-for="photo in $store.getters.getAllPhotos"
                 v-bind:key="photo.id"
                 v-bind:photo="photo"
-                @show='showModal'
             />
         </v-row>
-    <Modal v-model="dialogVisible" :photo="currentPhoto" />
+    <Modal />
     </v-container>
 </template>
 
@@ -24,13 +23,7 @@ import Modal from '../components/photo/Modal.vue';
             PhotoForm,
             Modal
         },
-        data:()=>{
-            return {
-                photos:[],
-                currentPhoto: {},
-                dialogVisible: false,
-        }
-    },
+        
       mounted(){
         // this.fetchPhotos();
         this.$store.dispatch("fetchPhotos");
@@ -41,12 +34,8 @@ import Modal from '../components/photo/Modal.vue';
         // .then(res=> this.photos = res.data);
         // },
         addPhoto(photo){
-            this.photos.push(photo);
+            this.$store.commit("addPhoto",photo);
         },
-        showModal(photo){
-            this.currentPhoto = photo;
-            this.dialogVisible = true;
-        }
     }
 
 }
